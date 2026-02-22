@@ -1,15 +1,32 @@
+import { useIsMobile } from "@/hooks/use-mobile";
+import { useEffect, useState } from "react";
+
 const Index = () => {
   const phone = "919428802316";
   const message = encodeURIComponent("Hi! I'd like to place an order from Dough Art");
   const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
+  const isMobile = useIsMobile();
+  const [pdfUrl, setPdfUrl] = useState("");
+
+  useEffect(() => {
+    if (isMobile) {
+      // Use Google Docs viewer for mobile - works much better than native iframe
+      const fullPdfUrl = `${window.location.origin}/Dough_Art_Menu_compressed.pdf`;
+      setPdfUrl(`https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(fullPdfUrl)}`);
+    } else {
+      setPdfUrl("/Dough_Art_Menu_compressed.pdf");
+    }
+  }, [isMobile]);
 
   return (
     <div style={{ width: "100vw", height: "100vh", position: "relative", overflow: "hidden" }}>
-      <iframe
-        src="/Dough_Art_Menu_compressed.pdf"
-        title="Dough Art Menu"
-        style={{ width: "100%", height: "100%", border: "none" }}
-      />
+      {pdfUrl && (
+        <iframe
+          src={pdfUrl}
+          title="Dough Art Menu"
+          style={{ width: "100%", height: "100%", border: "none" }}
+        />
+      )}
       <a
         href={whatsappUrl}
         target="_blank"
