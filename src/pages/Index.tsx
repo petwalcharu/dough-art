@@ -1,54 +1,15 @@
-import { useIsMobile } from "@/hooks/use-mobile";
-
 const Index = () => {
   const phone = "919428802316";
   const message = encodeURIComponent("Hi! I'd like to place an order from Dough Art");
   const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
-  const isMobile = useIsMobile();
 
   return (
     <div style={{ width: "100vw", height: "100vh", position: "relative", overflow: "hidden" }}>
-      {isMobile ? (
-        <div style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#fef9f0",
-          padding: "24px",
-          textAlign: "center",
-          gap: "20px",
-        }}>
-          <img src="/favicon.png" alt="Dough Art Logo" style={{ width: "120px", height: "120px", borderRadius: "50%", objectFit: "cover" }} />
-          <h1 style={{ fontSize: "24px", fontWeight: 700, color: "#333", margin: 0 }}>Dough Art</h1>
-          <p style={{ fontSize: "16px", color: "#666", margin: 0 }}>Home Bakery</p>
-          <a
-            href="/Dough_Art_Menu_compressed.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              background: "#e8772e",
-              color: "#fff",
-              padding: "14px 32px",
-              borderRadius: "50px",
-              fontSize: "16px",
-              fontWeight: 600,
-              textDecoration: "none",
-              boxShadow: "0 4px 14px rgba(0,0,0,0.15)",
-            }}
-          >
-            📋 View Our Menu
-          </a>
-        </div>
-      ) : (
-        <iframe
-          src="/Dough_Art_Menu_compressed.pdf"
-          title="Dough Art Menu"
-          style={{ width: "100%", height: "100%", border: "none" }}
-        />
-      )}
+      <iframe
+        src="/Dough_Art_Menu_compressed.pdf"
+        title="Dough Art Menu"
+        style={{ width: "100%", height: "100%", border: "none" }}
+      />
       <a
         href={whatsappUrl}
         target="_blank"
@@ -59,9 +20,9 @@ const Index = () => {
           right: "24px",
           background: "#25D366",
           color: "#fff",
-          padding: isMobile ? "12px 20px" : "14px 24px",
+          padding: "14px 24px",
           borderRadius: "50px",
-          fontSize: isMobile ? "14px" : "16px",
+          fontSize: "16px",
           fontWeight: 600,
           textDecoration: "none",
           display: "flex",
