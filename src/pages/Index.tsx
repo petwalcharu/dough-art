@@ -1,6 +1,6 @@
 const Index = () => {
   const phone = "919428802316";
-  const message = encodeURIComponent("Hi! I'd like to place an order from Dough Art 🍕");
+  const message = encodeURIComponent("Hi! I'd like to place an order from Dough Art");
   const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
 
   return (
